@@ -1,3 +1,4 @@
+<?php include_once "connect.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,11 +27,6 @@
                         </thead>
                         <tbody>
                             <?php
-                            $con = mysqli_connect('localhost', 'root', '', 'test') or die('Unable');
-                            if ($con->connect_error) {
-                                die("Connection failed: "
-                                    . $con->connect_error);
-                            }
                             $result = mysqli_query($con, "SELECT * FROM product");
 
                             while ($row = mysqli_fetch_array($result)) {

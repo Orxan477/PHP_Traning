@@ -1,3 +1,4 @@
+<?php include_once "connect.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,11 +19,11 @@
                     <form method="post" action="update.php">
 
                         <?php
-                        $con = mysqli_connect('localhost', 'root', '', 'test') or die('Unable');
-                        if ($con->connect_error) {
-                            die("Connection failed: "
-                            . $con->connect_error);
-                        }
+                        // $con = mysqli_connect('localhost', 'root', '', 'test') or die('Unable');
+                        // if ($con->connect_error) {
+                        //     die("Connection failed: "
+                        //     . $con->connect_error);
+                        // }
                         $updatePro=$_GET['id'];
                         $result = mysqli_query($con, "SELECT * FROM product where id=$updatePro");
                         $row = mysqli_fetch_assoc($result);
