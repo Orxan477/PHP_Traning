@@ -32,21 +32,22 @@
                                     . $con->connect_error);
                             }
                             $result = mysqli_query($con, "SELECT * FROM product");
+
                             while ($row = mysqli_fetch_array($result)) {
                                 echo
-                                    '<form action="updatePage.php" method="post">
-                                    <tr>
-                                <th scope="row" > ' . $row['Id'] . '</th>
-                                <td>' . $row['Name'] . '</td>
-                                <td class="d-none"><input type="hidden" class="d-none" name="searchUpdateProduct" value="' . $row['Id'] . '"></td>
-                                <th><button type="submit" name="goUpdatePage" class="btn btn-warning">Link</button></th>
-                                </form>
-                                    <form action="delete.php" method="post">
-                                    <td class="d-none"><input type="hidden" class="d-none" name="searchDeleteProduct" value="' . $row['Id'] . '"></td>
-
-                                    <th><button type="submit" name="goDeletePage" class="btn btn-danger">Link</button></th>
-</form>
-                                </tr>
+                                    '
+                                        <tr>
+                                            <th scope="row" > ' . $row['Id'] . '</th>
+                                            <td>' . $row['Name'] . '</td>
+                                            <td class="d-none"><input type="hidden" class="d-none" name="searchUpdateProduct" value="' . $row['Id'] . '"></td>
+                                            </form>
+                                            <th>
+                                                <a href="updatePage.php?id=' . $row['Id'] . '"  class="btn btn-warning">Link</a>
+                                            </th>
+                                            <th>
+                                                <a href="delete.php?id=' . $row['Id'] . '" class="btn btn-danger">Link</a>
+                                            </th>
+                                        </tr>
                                    ';
                             }
                             ?>

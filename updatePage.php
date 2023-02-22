@@ -21,28 +21,22 @@
                         $con = mysqli_connect('localhost', 'root', '', 'test') or die('Unable');
                         if ($con->connect_error) {
                             die("Connection failed: "
-                                . $con->connect_error);
+                            . $con->connect_error);
                         }
-                        if (isset($_POST['goUpdatePage'])) {
-                            $updatePro = $_POST["searchUpdateProduct"];
-                        }
-                        $result = mysqli_query($con, "SELECT * FROM product where product.id=$updatePro");
-                        $row = mysqli_fetch_array($result);
-                        foreach ($row as $key => $value) {
-                            // echo "{$key}=>{$value} , " - "";
-                            print_r($row);
-                        }
-                        // while ($row) {
-                        //     echo ' 
-                        //       <form method="post" action="update.php">
-                        //       <div class="form-group">
-                        //        <label for="exampleInputEmail1">Name</label>
-                        //        <input type="hidden" class="form-control" name="customIdUpdate" value="' . $row['Id'] . '">
-                        //        <input type="text" class="form-control" name="customUpdate" value="' . $row['Name'] . '">
-                        //        </div>
-                        //    <button type="submit" name="submitUpdate" class="btn btn-primary">Submit</button>
-                        //     </form>';
-                        // }
+                        $updatePro=$_GET['id'];
+                        $result = mysqli_query($con, "SELECT * FROM product where id=$updatePro");
+                        $row = mysqli_fetch_assoc($result);
+                            echo ' 
+                              <form method="post" action="update.php">
+                              <div class="form-group">
+                               <label for="exampleInputEmail1">Name</label>
+                               <input type="hidden" class="form-control" name="customIdUpdate" value="' . $row['Id'] . '">
+                               <input type="text" class="form-control" name="customUpdate" value="' . $row['Name'] . '">
+                               </div>
+                           <button type="submit" name="submitUpdate" class="btn btn-primary">Submit</button>
+                            </form>';
+                        
+                        
                         ?>
                     </form>
 
